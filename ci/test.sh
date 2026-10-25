@@ -4,6 +4,9 @@
 # upload step is not ported: it needs Codecov's token, which this setup does not hold.
 set -eu
 
+# As on GitHub Actions: jest does not write a missing snapshot, it fails.
+export CI=true
+
 npm ci
 npm run test
 npm run lint
