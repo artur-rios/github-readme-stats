@@ -10,9 +10,6 @@
     },
     "appPort": [],
 
-    // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "npm install -g vercel",
-
     // Use 'postStartCommand' to run commands after the container is started.
     "postStartCommand": "hostname dev && npm install",
 
