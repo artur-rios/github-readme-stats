@@ -1,0 +1,5 @@
+{
+  "extends": ["local>artur-rios/yggdrasil//renovate/default"],
+  "baseBranchPatterns": ["master"],
+  "enabledManagers": ["custom.regex", "dockerfile"]
+}
