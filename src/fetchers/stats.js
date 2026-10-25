@@ -198,7 +198,8 @@ const totalCommitsFetcher = async (username) => {
   try {
     res = await retryer(fetchTotalCommits, { login: username });
   } catch (err) {
-    logger.log(err);
+    // Not the raw error: an AxiosError carries the request headers, and so the token.
+    logger.log([err?.message, err?.code].filter(Boolean).join(" "));
     throw new Error(err);
   }
 
