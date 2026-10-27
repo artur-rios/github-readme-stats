@@ -1,3 +1,9 @@
+> [!NOTE]
+> This is the real, open-source code of github-readme-stats. Its home is Forgejo, at
+> https://git.techcraftsmen.net/artur-rios/github-readme-stats; the copy on GitHub is a read-only mirror, for viewing only, and
+> its issues and pull requests are not followed. If you want to contribute, email me at
+> arturdev@duck.com.
+
 > This fork lives at https://git.techcraftsmen.net/artur-rios/github-readme-stats, served at https://readme-stats.techcraftsmen.net. GitHub is a read-only mirror.
 
 <div align="center">
