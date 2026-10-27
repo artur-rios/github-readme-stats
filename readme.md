@@ -4,6 +4,8 @@
 > its issues and pull requests are not followed. If you want to contribute, email me at
 > arturdev@duck.com.
 
+> This fork lives at https://git.techcraftsmen.net/artur-rios/github-readme-stats, served at https://readme-stats.techcraftsmen.net. GitHub is a read-only mirror.
+
 <div align="center">
   <img src="https://res.cloudinary.com/anuraghazra/image/upload/v1594908242/logo_ccswme.svg" width="100px" alt="GitHub Readme Stats" />
   <h1 style="font-size: 28px; margin: 10px 0;">GitHub Readme Stats</h1>
@@ -803,6 +805,19 @@ By default, GitHub does not lay out the cards side by side. To do that, you can 
 </details>
 
 # Deploy on your own
+
+## This fork's deployment (readme-stats.techcraftsmen.net)
+
+This fork runs as a plain Node server (`server.js`, see the `Dockerfile`) on port 8080. Its variables are the application's environment, read when the container starts:
+
+| Variable | Required | Value |
+|---|---|---|
+| `PAT_1` | yes | The GitHub personal access token (see below). `PAT_2`, `PAT_3`... are optional spares, tried in order when one is rate limited. |
+| `WHITELIST` | yes | `artur-rios`. Only these usernames (comma separated) are served by every card but gist, so the token can render nothing but the owner's cards. Without it, anyone can spend the token's rate limit. |
+| `GIST_WHITELIST` | yes, if gists are served | The allowed gist IDs, comma separated. Without it, every gist is served. |
+| `CACHE_SECONDS`, `EXCLUDE_REPO`, `FETCH_MULTI_PAGE_STARS` | no | As in [Available environment variables](#available-environment-variables). |
+
+Caching: Vercel's edge cache (`s-maxage`) is gone. The cards still send the same `Cache-Control` header, but only `max-age` reaches browsers and GitHub's image proxy (camo); every other request reaches the server, and GitHub. `/api/status/*` is not served. `GET /healthz` is the health check.
 
 ## First step: get your Personal Access Token (PAT)
 

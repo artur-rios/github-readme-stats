@@ -117,7 +117,8 @@ export default async (req, res) => {
     }
   } catch (err) {
     // Return fail boolean if something went wrong.
-    logger.error(err);
+    // Not the raw error: an AxiosError carries the request headers, and so the token.
+    logger.error([err?.message, err?.code].filter(Boolean).join(" "));
     res.setHeader("Cache-Control", "no-store");
     res.send("Something went wrong: " + err.message);
   }
