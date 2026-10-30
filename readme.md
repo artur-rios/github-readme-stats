@@ -1,11 +1,3 @@
-> [!NOTE]
-> This is the real, open-source code of github-readme-stats. Its home is Forgejo, at
-> https://git.techcraftsmen.net/artur-rios/github-readme-stats; the copy on GitHub is a read-only mirror, for viewing only, and
-> its issues and pull requests are not followed. If you want to contribute, email me at
-> arturdev@duck.com.
-
-> This fork lives at https://git.techcraftsmen.net/artur-rios/github-readme-stats, served at https://readme-stats.techcraftsmen.net. GitHub is a read-only mirror.
-
 <div align="center">
   <img src="https://res.cloudinary.com/anuraghazra/image/upload/v1594908242/logo_ccswme.svg" width="100px" alt="GitHub Readme Stats" />
   <h1 style="font-size: 28px; margin: 10px 0;">GitHub Readme Stats</h1>
@@ -953,6 +945,11 @@ See [the Vercel documentation](https://vercel.com/docs/concepts/projects/environ
 ## Keep your fork up to date
 
 You can keep your fork, and thus your private Vercel instance up to date with the upstream using GitHub's [Sync Fork button](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork). You can also use the [pull](https://github.com/wei/pull) package created by [@wei](https://github.com/wei) to automate this process.
+
+# Contributing
+
+The GitHub repository is a read-only mirror for the real, open-source code of github-readme-stats. Its home is Forgejo, at
+https://git.techcraftsmen.net/artur-rios/github-readme-stats. If you want to contribute, e-mail me at arturdev@duck.com.
 
 # :sparkling\_heart: Support the project
 
