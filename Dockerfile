@@ -3,14 +3,14 @@
 # GitHub token (PAT_1, PAT_2, ...) is the application's variable, read from the container's environment at run
 # time (env_file), never a build argument.
 # Node 22 is what .nvmrc and package.json "engines" ask for.
-FROM node:22.23.4-alpine3.24@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 AS deps
+FROM node:26.13.0-alpine3.24@sha256:8996bb5821d62a8fd9bb27c1cb07462f3fdce6e47d640c6a881ead0b064ce216 AS deps
 
 WORKDIR /app
 COPY package.json package-lock.json ./
 # --ignore-scripts: the "prepare" script runs husky, a git hook tool the image has no use for.
 RUN npm ci --omit=dev --ignore-scripts && mkdir -p node_modules
 
-FROM node:22.23.4-alpine3.24@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914
+FROM node:26.13.0-alpine3.24@sha256:8996bb5821d62a8fd9bb27c1cb07462f3fdce6e47d640c6a881ead0b064ce216
 
 ARG GIT_COMMIT=
 ARG YGG_ENVIRONMENT=
