@@ -2,6 +2,8 @@ import { describe, expect, it } from "@jest/globals";
 import "@testing-library/jest-dom";
 import { calculateRank } from "../src/calculateRank.js";
 
+// Percentiles are compared to 10 decimal places, not exactly: the rank is a sum of floating-point
+// powers (`2 ** -x`), whose last bit can differ between Node.js versions (22 and 26 do).
 describe("Test calculateRank", () => {
   it("new user gets C rank", () => {
     expect(
@@ -30,7 +32,10 @@ describe("Test calculateRank", () => {
         stars: 25,
         followers: 5,
       }),
-    ).toStrictEqual({ level: "B-", percentile: 65.02918514848255 });
+    ).toStrictEqual({
+      level: "B-",
+      percentile: expect.closeTo(65.02918514848255, 10),
+    });
   });
 
   it("median user gets B+ rank", () => {
@@ -45,7 +50,7 @@ describe("Test calculateRank", () => {
         stars: 50,
         followers: 10,
       }),
-    ).toStrictEqual({ level: "B+", percentile: 46.09375 });
+    ).toStrictEqual({ level: "B+", percentile: expect.closeTo(46.09375, 10) });
   });
 
   it("average user gets B+ rank (include_all_commits)", () => {
@@ -60,7 +65,7 @@ describe("Test calculateRank", () => {
         stars: 50,
         followers: 10,
       }),
-    ).toStrictEqual({ level: "B+", percentile: 46.09375 });
+    ).toStrictEqual({ level: "B+", percentile: expect.closeTo(46.09375, 10) });
   });
 
   it("advanced user gets A rank", () => {
@@ -75,7 +80,10 @@ describe("Test calculateRank", () => {
         stars: 200,
         followers: 40,
       }),
-    ).toStrictEqual({ level: "A", percentile: 20.841471354166664 });
+    ).toStrictEqual({
+      level: "A",
+      percentile: expect.closeTo(20.841471354166664, 10),
+    });
   });
 
   it("expert user gets A+ rank", () => {
@@ -90,7 +98,10 @@ describe("Test calculateRank", () => {
         stars: 800,
         followers: 160,
       }),
-    ).toStrictEqual({ level: "A+", percentile: 5.575988339442828 });
+    ).toStrictEqual({
+      level: "A+",
+      percentile: expect.closeTo(5.575988339442828, 10),
+    });
   });
 
   it("sindresorhus gets S rank", () => {
@@ -105,6 +116,9 @@ describe("Test calculateRank", () => {
         stars: 600000,
         followers: 50000,
       }),
-    ).toStrictEqual({ level: "S", percentile: 0.4578556547153667 });
+    ).toStrictEqual({
+      level: "S",
+      percentile: expect.closeTo(0.4578556547153667, 10),
+    });
   });
 });
